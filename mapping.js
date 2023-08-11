@@ -11,6 +11,10 @@
 TODO:
 - support variants (i.e. for allowed chars)
 - support iterations/ versions (i.e. increment num)
+- Argon2 https://github.com/antelle/argon2-browser
+	(argon2id, min, Memory: 7 MiB, Iterations: 5, Parallelism: 1)
+	salt ideally 16 bytes
+	check against alternative implementation (i.e. python)
  */
 
 const us = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-=[];'\\,./~_+{}:"||<>?`;
@@ -79,6 +83,15 @@ function convert(string, doClean=true, doUpper=true) {
 			res = res.replace(matches[0], matches[0].toUpperCase());
 		}
 	}
+	return res;
+}
+
+function digit_convert(character) {
+	return String(9 - Number(character));
+}
+
+function num_convert(string) {
+	res = string.split("").map(digit_convert).join("");
 	return res;
 }
 

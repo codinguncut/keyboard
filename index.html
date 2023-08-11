@@ -7,6 +7,15 @@
 		<input id="output" type="text" size=100></input><br/>
 		<button id="convert" onclick="doButton()" type="submit">Convert</button>
 	</form>
+
+	<h3>Numbers</h4>
+	<form action="javascript:void(0);">
+		<label for="num_input">Input:</label>
+		<input id="num_input" type="text" size=100></input><br/>
+		<label for"num_output">Output:</label>
+		<input id="num_output" type="text" size=100></input><br/>
+		<button id="num_convert" onclick="numButton()" type="submit">Convert</button>
+	</form>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="./mapping.js"></script>
@@ -17,6 +26,15 @@ function doButton() {
 	let input = $("#input").val();
 	let res = convert(input, true);
 	$("#output").val(res);
+
+	// copy to clipboard
+	navigator.clipboard.writeText(res);
+}
+
+function numButton() {
+	let input = $("#num_input").val();
+	let res = num_convert(input, true);
+	$("#num_output").val(res);
 
 	// copy to clipboard
 	navigator.clipboard.writeText(res);
